@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final String age = " ";
         final Spinner spinner = findViewById(R.id.spinner);
         final ConstraintLayout layout = findViewById(R.id.layout);
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
                 String colSelected = spinner.getSelectedItem().toString();
                 layout.setBackgroundColor(Color.parseColor(colSelected));
                 view.setBackgroundColor(Color.WHITE);
