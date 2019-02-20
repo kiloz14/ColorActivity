@@ -1,5 +1,6 @@
 package com.example.coloractivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -9,25 +10,33 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final  String HOLDER = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String age = " ";
+
         final Spinner spinner = findViewById(R.id.spinner);
         final ConstraintLayout layout = findViewById(R.id.layout);
 
+        getSupportActionBar().setTitle("PaletteActivity");
+
         spinner.setAdapter(new CustomAdapter (this));
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-
+                Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
                 String colSelected = spinner.getSelectedItem().toString();
-                layout.setBackgroundColor(Color.parseColor(colSelected));
-                view.setBackgroundColor(Color.WHITE);
+                intent.putExtra("HOLDER" , colSelected);
+               // layout.setBackgroundColor(Color.parseColor(colSelected));
+              //  view.setBackgroundColor(Color.WHITE);
+                startActivity(intent);
+
+
             }
 
             @Override
