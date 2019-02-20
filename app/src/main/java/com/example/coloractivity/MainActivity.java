@@ -28,14 +28,20 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                boolean well = false ;
                 Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
                 String colSelected = spinner.getSelectedItem().toString();
-                intent.putExtra("HOLDER" , colSelected);
-               // layout.setBackgroundColor(Color.parseColor(colSelected));
-              //  view.setBackgroundColor(Color.WHITE);
-                startActivity(intent);
 
+              if(!well){
+
+                  intent.putExtra("HOLDER" , colSelected);
+                  startActivity(intent);
+              }
+
+              else
+              {
+                  well = true;
+              }
 
             }
 
