@@ -11,6 +11,8 @@ import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     public static final  String HOLDER = "";
+    boolean well = false ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +24,17 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("PaletteActivity");
 
-        spinner.setAdapter(new CustomAdapter (this));
+        spinner.setAdapter(new CustomAdapter (this) );
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                boolean well = false ;
+
                 Intent intent = new Intent(MainActivity.this, CanvasActivity.class);
                 String colSelected = spinner.getSelectedItem().toString();
 
-              if(!well){
+              if(well){
 
                   intent.putExtra("HOLDER" , colSelected);
                   startActivity(intent);
